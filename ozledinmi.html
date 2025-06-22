@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Senin için</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 15%;
+      overflow: hidden;
+    }
+
+    .fade-text {
+      font-size: 2em;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    .fade2 {
+      animation-delay: 3s;
+    }
+
+    .question {
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 6s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .btn {
+      margin: 20px;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #yesBtn {
+      background-color: #28a745;
+      color: white;
+      font-size: 20px;
+    }
+
+    #noBtn {
+      background-color: #dc3545;
+      color: white;
+      font-size: 20px;
+    }
+
+    .heart {
+      font-size: 2.2em;
+      animation: pulse 1.5s infinite;
+      color: #ff5e78;
+      margin-top: 30px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    #response {
+      margin-top: 30px;
+      font-size: 1.8em;
+      color: #ffd1dc;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="fade-text">Selam güzelim, beni özledin mi?</div>
+
+  <div class="question" id="question">
+    <button class="btn" id="yesBtn">Evet 🥹</button>
+    <button class="btn" id="noBtn">Hayır 😶</button>
+  </div>
+
+  <div id="response">Ve ben de seni... çok özledim. 💌</div>
+
+  <div class="heart">❤️</div>
+
+  <!-- Norah Jones müzik -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/7ktxxn.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    let yesBtn = document.getElementById("yesBtn");
+    let noBtn = document.getElementById("noBtn");
+    let response = document.getElementById("response");
+
+    let yesSize = 20;
+    let noSize = 20;
+
+    yesBtn.onclick = function () {
+      yesSize += 5;
+      yesBtn.style.fontSize = yesSize + "px";
+      if (yesSize > 40) {
+        document.getElementById("question").style.display = "none";
+        response.style.display = "block";
+      }
+    };
+
+    noBtn.onclick = function () {
+      noSize -= 2;
+      if (noSize < 10) noSize = 10;
+      noBtn.style.fontSize = noSize + "px";
+      noBtn.style.transform = "translateX(" + (Math.random() * 200 - 100) + "px)";
+    };
+  </script>
+</body>
+</html>
+
